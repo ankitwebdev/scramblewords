@@ -17,7 +17,7 @@
         $('#myForm').submit(function(e){
             e.preventDefault();
             $.ajax({
-                url: "/post.php",
+                url: "post.php",
                 type: "POST",
                 data: $(this).serialize(),
                 success: function(data){
