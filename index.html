@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Form</title>
+    </head>
+    <body>
+    
+    <form id="myForm">
+ <textarea id="str" name="str" rows="10" cols="50">According to a researcher at Cambridge University, it doesn't matter in what order the letters in a word are, the only important thing is that the first and last letter be at the right place. The rest can be a total mess and you can still read it without problem. This is because the human mind does not read every letter by itself but the word as a whole</textarea>        
+        <input type="submit" name="submit" value="Submit Form" />
+    </form>
+    
+    <div id="postData"></div>
+    
+     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('#myForm').submit(function(e){
+            e.preventDefault();
+            $.ajax({
+                url: "post.php",
+                type: "POST",
+                data: $(this).serialize(),
+                success: function(data){
+                    $("#postData").html(data);
+                },
+                error: function(){
+                    alert("Form submission failed!");
+                }
+            });
+        });
+    });
+    </script>
+    </body>
+</html>
